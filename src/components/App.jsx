@@ -54,6 +54,7 @@ class App extends Component {
                 <SongsTable songs={this.state.songs} />
                 <AddSong createSong={this.createSong} /> 
                 <Dashboard contents={<AddSong createSong={this.createSong} />} message="Add New Song" />
+                
             </div>
         )
     }

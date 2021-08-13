@@ -3,7 +3,7 @@ import Song from '../Song/Song';
 
 function SongsTable(props) {
     const songDetails = props.songs.map((song) => {
-        debugger;
+        //debugger;
         return <Song song={song} />
     })
     return (
