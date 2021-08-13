@@ -29,7 +29,18 @@ class App extends Component {
 
     // newSong
     createSong = (newSong) => {
-        this.state.push(newSong);
+        this.newSong(newSong);
+    }
+
+    async newSong(song) {
+        try{
+            let response = await axios.post("http://127.0.0.1:8000/songs/", song);
+            if (response.status < 400) {
+                this.getSongs();
+            }
+        } catch (ex) {
+            console.log("API call failed.");
+        }
     }
 
     // deleteSong

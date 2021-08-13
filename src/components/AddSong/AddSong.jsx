@@ -28,17 +28,17 @@ class AddSong extends React.Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-            <label>Song Title:</label>
-                <input name="title" type="text" value={this.state.title} onChange={this.handleChange} />
-            <label>Artist:</label>
-                <input name="artist" type="text" value={this.state.artist} onChange={this.handleChange} />
-            <label>Album:</label>
-                <input name="album" type="text" value={this.state.album} onChange={this.handleChange} />
-            <label>Release Date:</label>
-                <input name="release_date" type="date" value={this.state.release_date} onChange={this.handleChange} />
-            <label>Genre:</label>
-                <input name="genre" type="text" value={this.state.genre} onChange={this.handleChange} />
-            <button type="submit" value="Submit">Add New Song</button>
+                <label>Song Title:</label>
+                    <input name="title" type="text" value={this.state.title} onChange={this.handleChange} />
+                <label>Artist:</label>
+                    <input name="artist" type="text" value={this.state.artist} onChange={this.handleChange} />
+                <label>Album:</label>
+                    <input name="album" type="text" value={this.state.album} onChange={this.handleChange} />
+                <label>Release Date:</label>
+                    <input name="release_date" type="date" value={this.state.release_date} onChange={this.handleChange} />
+                <label>Genre:</label>
+                    <input name="genre" type="text" value={this.state.genre} onChange={this.handleChange} />
+                <button type="submit" value="Submit">Add New Song</button>
         </form>
         );
     }
