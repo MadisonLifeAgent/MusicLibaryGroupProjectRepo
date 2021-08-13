@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SongsTable from './SongsTable/SongsTable';
 
 
 class App extends Component {
@@ -9,7 +10,7 @@ class App extends Component {
 
     render() {
         return (
-            <h1>Our React App from App Component</h1>
+            <SongsTable songs={this.state} />
         )
     }
 }
