@@ -47,6 +47,21 @@ class App extends Component {
     // deleteSong
 
     // updateSong
+    editSong = (song) => {
+        this.editSong(song);
+    }
+
+    // api call to post new song
+    async editSong(song) {
+        try{
+            let response = await axios.get("http://127.0.0.1:8000/songs/detail/" + song.id);
+            if (response.status < 400) {
+                this.getSongs();
+            }
+        } catch (ex) {
+            console.log("API call failed.");
+        }
+    }
 
     render() {
         if (this.state.songs.length === 0) {
