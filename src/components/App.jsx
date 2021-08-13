@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import SongsTable from './SongsTable/SongsTable';
+import FilterSongs from './FilterSongs/FilterSongs';
 import AddSong from './AddSong/AddSong';
 import Dashboard from './Dashboard/Dashboard';
 
@@ -49,14 +49,17 @@ class App extends Component {
     // updateSong
 
     render() {
-        return (
-            <div>
-                <SongsTable songs={this.state.songs} />
-                <AddSong createSong={this.createSong} /> 
-                <Dashboard contents={<AddSong createSong={this.createSong} />} message="Add New Song" />
-                
-            </div>
-        )
+        if (this.state.songs.length === 0) {
+            return (<h1>Sorry, no songs available!</h1>)
+        } else {
+            return (
+                <div>
+                    <FilterSongs songs={this.state.songs} />
+                    <AddSong createSong={this.createSong} /> 
+                    <Dashboard contents={<AddSong createSong={this.createSong} />} message="Add New Song" />
+                </div>
+            )
+        }
     }
 }
 
