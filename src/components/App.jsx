@@ -37,6 +37,10 @@ class App extends Component {
     async newSong(song) {
         try{
             let response = await axios.post("http://127.0.0.1:8000/songs/", song);
+            let currentSongs = this.state.songs;
+            currentSongs.push(response.data);
+            this.setState({
+                songs: currentSongs});
         } catch (ex) {
             console.log("API call failed.");
         }
@@ -46,6 +50,14 @@ class App extends Component {
     async udpateSong(song) {
         try{
             let response = await axios.put(`http://127.0.0.1:8000/songs/detail/${song.id}`, song);
+
+            // Manually update the context
+            let currentSongIndex = this.state.songs.findIndex( (stateSong) => stateSong.id === song.id );
+            let allSongs = this.state.songs;
+            allSongs[currentSongIndex] = song;
+            this.setState({
+                songs: allSongs
+            });
         } catch (ex) {
             console.log("API call failed.");
         }
@@ -54,6 +66,7 @@ class App extends Component {
     // Call the async update method
     editSong = (song) => {
         this.udpateSong(song);
+        this.forceUpdate();
     }
 
     // delete song
@@ -65,6 +78,14 @@ class App extends Component {
     async deleteOneSong(song) {
         try{
             let response = await axios.delete(`http://127.0.0.1:8000/songs/detail/${song.id}`);
+
+            console.log(response.status);
+            // Manually update the context
+            let remainingSongs = this.state.songs;
+            remainingSongs = remainingSongs.filter( (stateSong) => { return (stateSong.id !== song.id) });
+            this.setState({
+                songs: remainingSongs
+            });
         } catch (ex) {
             console.log("API call failed.");
         }
@@ -77,7 +98,7 @@ class App extends Component {
         } else {
             return (
                 <div>
-                    <FilterSongs songs={this.state.songs} updateSong={this.editSong} deleteSong={this.deleteSong} />
+                    <FilterSongs songs={this.state.songs} updateSong={this.editSong} deleteSong={this.deleteSong.bind(this)} />
                     <AddSong createSong={this.createSong.bind(this)} /> 
                     <Dashboard contents={<AddSong createSong={this.createSong} />} message="Add New Song" />
                 </div>
