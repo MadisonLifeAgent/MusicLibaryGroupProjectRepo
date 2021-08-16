@@ -3,6 +3,7 @@ import axios from 'axios'
 import FilterSongs from './FilterSongs/FilterSongs';
 import AddSong from './AddSong/AddSong';
 import Dashboard from './Dashboard/Dashboard';
+import './App.css'
 
 
 class App extends Component {
@@ -76,10 +77,14 @@ class App extends Component {
             return (<h1>Sorry, no songs available!</h1>)
         } else {
             return (
-                <div>
-                    <FilterSongs songs={this.state.songs} updateSong={this.editSong} deleteSong={this.deleteSong} />
-                    <AddSong createSong={this.createSong.bind(this)} /> 
-                    <Dashboard contents={<AddSong createSong={this.createSong} />} message="Add New Song" />
+                <div class="m-4">
+                    <div class="row mb-2">
+                        <FilterSongs songs={this.state.songs} updateSong={this.editSong} deleteSong={this.deleteSong} />
+                    </div>
+                    <div class="row mb-2">
+                        <AddSong createSong={this.createSong.bind(this)} />
+                    </div>
+                        <Dashboard contents={<AddSong createSong={this.createSong} />} message="Add New Song"/>
                 </div>
             )
         }
