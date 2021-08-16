@@ -42,9 +42,6 @@ class App extends Component {
         }
     }
 
-    // deleteSong
-
-
     // api call to update a song
     async udpateSong(song) {
         try{
@@ -59,13 +56,28 @@ class App extends Component {
         this.udpateSong(song);
     }
 
+    // delete song
+    deleteSong = (song) => {
+        this.deleteOneSong(song);
+    }
+
+    // api call to update a song
+    async deleteOneSong(song) {
+        try{
+            let response = await axios.delete(`http://127.0.0.1:8000/songs/detail/${song.id}`);
+        } catch (ex) {
+            console.log("API call failed.");
+        }
+    }
+
+
     render() {
         if (this.state.songs.length === 0) {
             return (<h1>Sorry, no songs available!</h1>)
         } else {
             return (
                 <div>
-                    <FilterSongs songs={this.state.songs} updateSong={this.editSong} />
+                    <FilterSongs songs={this.state.songs} updateSong={this.editSong} deleteSong={this.deleteSong} />
                     <AddSong createSong={this.createSong.bind(this)} /> 
                     <Dashboard contents={<AddSong createSong={this.createSong} />} message="Add New Song" />
                 </div>

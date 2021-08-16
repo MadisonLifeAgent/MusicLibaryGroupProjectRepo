@@ -15,6 +15,7 @@ class FilterSongs extends Component {
             likesFilter: 0
         }
         this.updateSong = props.updateSong;
+        this.deleteSong = props.deleteSong;
     }
 
     handleChange = (event) => {
@@ -91,7 +92,7 @@ class FilterSongs extends Component {
                     <label>Genre:</label>
                         <input name="genreFilter" type="text" value={this.state.genreFilter} onChange={this.handleChange} />
                 </form>
-                <SongsTable songs={this.state.filteredSongs} updateSong={this.updateSong} />
+                <SongsTable songs={this.state.filteredSongs} updateSong={this.updateSong} deleteSong={this.deleteSong} />
             </div>
         )
     }
