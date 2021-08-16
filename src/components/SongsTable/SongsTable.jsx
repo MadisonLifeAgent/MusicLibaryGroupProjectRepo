@@ -4,7 +4,7 @@ import Song from '../Song/Song';
 function SongsTable(props) {
     const songDetails = props.songs.map((song) => {
         //debugger;
-        return <Song song={song} />
+        return <Song song={song} updateSong={props.updateSong} />
     })
     return (
         <table>

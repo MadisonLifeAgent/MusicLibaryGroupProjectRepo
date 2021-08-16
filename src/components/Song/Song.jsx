@@ -11,7 +11,7 @@ const Song = (props) => {
             <td>{props.song.genre}</td>
             <td>{props.song.release_date}</td>
             <td>{props.song.likes}</td>
-            <td><Dashboard contents={<EditSong editSong={props.editSong[props.song]} />} message="Edit Song" /></td>
+            <td><Dashboard contents={<EditSong editSong={props.updateSong(props.song)} />} message="Edit Song" /></td>
         </tr>
     )
 }

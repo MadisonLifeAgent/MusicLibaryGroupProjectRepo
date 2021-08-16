@@ -4,7 +4,6 @@ import SongsTable from '../SongsTable/SongsTable'
 class FilterSongs extends Component {
     constructor(props) {
         super(props);
-        debugger;
         this.state = {
             allSongs: props.songs,
             filteredSongs: props.songs,
@@ -15,6 +14,7 @@ class FilterSongs extends Component {
             releaseFilter: "",
             likesFilter: 0
         }
+        this.updateSong = props.updateSong;
     }
 
     handleChange = (event) => {
@@ -29,7 +29,6 @@ class FilterSongs extends Component {
     }
 
     getTempState = (event) => {
-        debugger;
         let tempState = this.state;
         tempState[event.target.name] = event.target.value;
         return tempState;
@@ -92,7 +91,7 @@ class FilterSongs extends Component {
                     <label>Genre:</label>
                         <input name="genreFilter" type="text" value={this.state.genreFilter} onChange={this.handleChange} />
                 </form>
-                <SongsTable songs={this.state.filteredSongs} />
+                <SongsTable songs={this.state.filteredSongs} updateSong={this.updateSong} />
             </div>
         )
     }

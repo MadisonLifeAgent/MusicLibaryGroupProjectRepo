@@ -48,13 +48,13 @@ class App extends Component {
 
     // updateSong
     editSong = (song) => {
-        this.editSong(song);
+        this.updateSong(song);
     }
 
     // api call to post new song
-    async editSong(song) {
+    async udpateSong(song) {
         try{
-            let response = await axios.get("http://127.0.0.1:8000/songs/detail/" + song.id);
+            let response = await axios.get(`http://127.0.0.1:8000/songs/detail/${song.id}`);
             if (response.status < 400) {
                 this.getSongs();
             }
@@ -69,7 +69,7 @@ class App extends Component {
         } else {
             return (
                 <div>
-                    <FilterSongs songs={this.state.songs} />
+                    <FilterSongs songs={this.state.songs} updateSong={this.udpateSong} />
                     <AddSong createSong={this.createSong} /> 
                     <Dashboard contents={<AddSong createSong={this.createSong} />} message="Add New Song" />
                 </div>
