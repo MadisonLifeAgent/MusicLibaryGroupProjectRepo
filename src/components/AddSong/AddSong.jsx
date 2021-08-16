@@ -21,7 +21,7 @@ class AddSong extends React.Component {
     }
 
     handleSubmit = (event) => {
-        event.preventDefault();
+        //event.preventDefault();
         this.props.createSong(this.state);
         this.resetForm();
     }

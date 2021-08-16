@@ -23,6 +23,7 @@ class App extends Component {
             this.setState({
                 songs: response.data
             })
+            this.forceUpdate()
         } catch (ex) {
             console.log("API call failed.");
         }
@@ -35,7 +36,7 @@ class App extends Component {
 
     async newSong(song) {
         try{
-            let response = await axios.post("http://127.0.0.1:8000/songs/", song).then(this.getSongs());
+            let response = await axios.post("http://127.0.0.1:8000/songs/", song);
         } catch (ex) {
             console.log("API call failed.");
         }
@@ -65,7 +66,7 @@ class App extends Component {
             return (
                 <div>
                     <FilterSongs songs={this.state.songs} updateSong={this.editSong} />
-                    <AddSong createSong={this.createSong} /> 
+                    <AddSong createSong={this.createSong.bind(this)} /> 
                     <Dashboard contents={<AddSong createSong={this.createSong} />} message="Add New Song" />
                 </div>
             )
