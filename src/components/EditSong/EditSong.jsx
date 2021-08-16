@@ -26,7 +26,7 @@ class EditSong extends React.Component {
     }
 
     handleSubmit = (event) => {
-        //event.preventDefault();
+        event.preventDefault();
         console.log(this.state)
         this.updateSong(this.state);
         //this.resetForm();
