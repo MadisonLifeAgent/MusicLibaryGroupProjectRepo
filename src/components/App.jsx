@@ -35,10 +35,7 @@ class App extends Component {
 
     async newSong(song) {
         try{
-            let response = await axios.post("http://127.0.0.1:8000/songs/", song);
-            if (response.status < 400) {
-                this.getSongs();
-            }
+            let response = await axios.post("http://127.0.0.1:8000/songs/", song).then(this.getSongs());
         } catch (ex) {
             console.log("API call failed.");
         }
@@ -46,21 +43,19 @@ class App extends Component {
 
     // deleteSong
 
-    // updateSong
-    editSong = (song) => {
-        this.updateSong(song);
-    }
 
-    // api call to post new song
+    // api call to update a song
     async udpateSong(song) {
         try{
-            let response = await axios.get(`http://127.0.0.1:8000/songs/detail/${song.id}`);
-            if (response.status < 400) {
-                this.getSongs();
-            }
+            let response = await axios.put(`http://127.0.0.1:8000/songs/detail/${song.id}`, song);
         } catch (ex) {
             console.log("API call failed.");
         }
+    }
+    
+    // Call the async update method
+    editSong = (song) => {
+        this.udpateSong(song);
     }
 
     render() {
@@ -69,7 +64,7 @@ class App extends Component {
         } else {
             return (
                 <div>
-                    <FilterSongs songs={this.state.songs} updateSong={this.udpateSong} />
+                    <FilterSongs songs={this.state.songs} updateSong={this.editSong} />
                     <AddSong createSong={this.createSong} /> 
                     <Dashboard contents={<AddSong createSong={this.createSong} />} message="Add New Song" />
                 </div>

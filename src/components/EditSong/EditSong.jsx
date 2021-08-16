@@ -5,13 +5,18 @@ class EditSong extends React.Component {
         super(props);
 
         this.state = {
-            title: props.title,
-            artist: props.artist,
-            album: props.album,
-            release_date: props.release_date,
-            genre: props.genre,
-            likes: props.likes,
+            id: props.song.id,
+            title: props.song.title,
+            artist: props.song.artist,
+            album: props.song.album,
+            release_date: props.song.release_date,
+            genre: props.song.genre,
+            likes: props.song.likes,
         }
+
+        this.updateSong = (song) =>  {
+            props.updateSong(song);
+        };
     }
 
     handleChange = (event) => {
@@ -22,8 +27,9 @@ class EditSong extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.createSong(this.state);
-        this.resetForm();
+        console.log(this.state)
+        this.updateSong(this.state);
+        //this.resetForm();
     }
 
     render() {
