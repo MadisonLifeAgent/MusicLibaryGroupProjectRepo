@@ -9,8 +9,8 @@ const Song = (props) => {
         <tr class="p-2">
             <td>
                 {props.song.title}
-                <Dashboard contents={<EditSong song={props.song} updateSong={props.updateSong} />} message="Edit" />
-                <Dashboard contents={<DeleteSong deleteSong={ () => props.deleteSong(props.song)} />} message="Delete"/>
+                <Dashboard type="edit" song={props.song} submitAction={props.updateSong} message="Edit" />
+                <Dashboard type="delete" song={props.song} submitAction={props.deleteSong} message="Delete" />
             </td>
             <td>{props.song.artist}</td>
             <td>{props.song.album}</td>

@@ -4,7 +4,7 @@ const DeleteSongModal = (props) => {
     const showHideClassName = props.show ? "modal display-block" : "modal display-none";
     const close = props.hideModal;
     const submitAction = () => {
-        props.submitAction();
+        props.submitAction(props.song);
         props.hideModal();
     }
 
@@ -12,11 +12,11 @@ const DeleteSongModal = (props) => {
         <div className={showHideClassName} color="white">
             <section className="modal-main">
                 <div class="m-3" >
-                    <p>Song Title: {props.title}</p>
-                    <p>Artist: {props.artist}</p>
-                    <p>Album: {props.album}</p>
-                    <p>Release Date: {props.release_date}</p>
-                    <p>Genre: {props.genre}</p>
+                    <p>Song Title: {props.song.title}</p>
+                    <p>Artist: {props.song.artist}</p>
+                    <p>Album: {props.song.album}</p>
+                    <p>Release Date: {props.song.release_date}</p>
+                    <p>Genre: {props.song.genre}</p>
                     <button onClick={submitAction}>Delete Song</button>
                     <button class="btn btn-primary" onClick={close} >Cancel</button>
                 </div>
