@@ -39,7 +39,6 @@ const FilterSongs = (props) => {
                 break;
         }
 
-        debugger;
         props.updateFilters(tempState);
     }
 

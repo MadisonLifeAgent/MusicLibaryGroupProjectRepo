@@ -45,7 +45,6 @@ class App extends Component {
 
 
     async getSongs() {
-        debugger;
         try{
             let response = await axios.get("http://127.0.0.1:8000/songs/");
             return response.data
@@ -55,7 +54,6 @@ class App extends Component {
     }
 
     async refreshSongs(callback, value) {
-        debugger;
         await callback(value);
         let songs = await this.getSongs();
         this.setState({
@@ -89,7 +87,6 @@ class App extends Component {
     }
 
     async likeSong(song) {
-        debugger;
         try{
             let response = await axios.get(`http://127.0.0.1:8000/songs/like/${song.id}`);
         } catch (ex) {
@@ -107,31 +104,31 @@ class App extends Component {
             let addSong = true;
 
             if(filters.title) {
-                if (!song.title.includes(filters.title)) {
+                if (!song.title.toLowerCase().includes(filters.title.toLowerCase())) {
                     addSong = false;
                 }
             } 
             
             if(addSong && filters.artist) {
-                if (!song.artist.includes(filters.artist)) {
+                if (!song.artist.toLowerCase().includes(filters.artist.toLowerCase())) {
                     addSong = false;
                 }
             } 
             
             if(addSong && filters.album) {
-                if (!song.album.includes(filters.album)) {
+                if (!song.album.toLowerCase().includes(filters.album.toLowerCase())) {
                     addSong = false;
                 }
             } 
             
             if(addSong && filters.genre) {
-                if (!song.genre.includes(filters.genre)) {
+                if (!song.genre.toLowerCase().includes(filters.genre.toLowerCase())) {
                     addSong = false;
                 }
             } 
             
-            if(addSong && filters.releaseDate) {
-                if (!(song.release_date === filters.releaseDate)) {
+            if(addSong && filters.release) {
+                if (!(song.release_date === filters.release)) {
                     addSong = false;
                 }
             }
