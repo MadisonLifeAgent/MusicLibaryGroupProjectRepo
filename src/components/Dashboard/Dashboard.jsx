@@ -42,7 +42,7 @@ class Dashboard extends Component {
             return (
                 <main className="col-sm-10 col-md-6">
                     <DeleteSongModal show={this.state.show} song={this.props.song} hideModal={this.hideModal} submitAction={this.submitAction} />
-                    <button type="button" onClick={this.showModal}>
+                    <button class="kbc-button-xxs" type="button" onClick={this.showModal}>
                         {this.state.message}
                     </button>
                 </main>
@@ -51,7 +51,7 @@ class Dashboard extends Component {
             return (
                 <main className="col-sm-10 col-md-6">
                     <EditSongModal show={this.state.show} song={this.props.song} hideModal={this.hideModal} submitAction={this.submitAction} />
-                    <button type="button" onClick={this.showModal}>
+                    <button class="kbc-button-xxs" type="button" onClick={this.showModal}>
                         {this.state.message}
                     </button>
                 </main>
@@ -60,7 +60,7 @@ class Dashboard extends Component {
             return (
                 <main className="col-sm-10 col-md-6">
                     <CreateSongModal show={this.state.show} song={this.props.song} hideModal={this.hideModal} submitAction={this.submitAction} />
-                    <button type="button" onClick={this.showModal}>
+                    <button class="kbc-button" type="button" onClick={this.showModal}>
                         {this.state.message}
                     </button>
                 </main>

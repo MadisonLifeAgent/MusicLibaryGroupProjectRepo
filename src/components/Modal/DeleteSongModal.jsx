@@ -17,8 +17,8 @@ const DeleteSongModal = (props) => {
                     <p>Album: {props.song.album}</p>
                     <p>Release Date: {props.song.release_date}</p>
                     <p>Genre: {props.song.genre}</p>
-                    <button onClick={submitAction}>Delete Song</button>
-                    <button class="btn btn-primary" onClick={close} >Cancel</button>
+                    <button class="btn btn-primary kbc-button kbc-button-sm" onClick={close} >Cancel</button>
+                    <button onClick={submitAction} class="kbc-button kbc-button-sm">Delete Song</button>
                 </div>
             </section>
         </div>

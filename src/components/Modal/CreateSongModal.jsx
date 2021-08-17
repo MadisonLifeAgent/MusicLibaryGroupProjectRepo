@@ -79,8 +79,8 @@ class CreateSongModal extends React.Component {
                             <input id="genre" name="genre" class="form-control" type="text" value={this.state.genre || ""} onChange={this.handleChange} />
                         </div>
                     </form>
-                    <button class="btn btn-secondary" onClick={this.hideModal}>Cancel</button>
-                    <button class="btn btn-primary" onClick={this.handleSubmit} >Add New Song</button>
+                    <button class="btn btn-secondary kbc-button kbc-button-sm" onClick={this.hideModal}>Cancel</button>
+                    <button class="btn btn-primary kbc-button kbc-button-sm" onClick={this.handleSubmit} >Add New Song</button>
                 </section>
             </div>
         );
