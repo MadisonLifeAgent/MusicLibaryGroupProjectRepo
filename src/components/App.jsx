@@ -104,10 +104,9 @@ class App extends Component {
                     <div class="container-fluid p-2 mb-2" id="table-border">
                         <FilterSongs songs={this.state.songs} updateSong={this.editSong} deleteSong={this.deleteSong} />
                     </div>
-                    <div class="row mb-2">
-                        <AddSong createSong={this.createSong.bind(this)} />
+                    <div>
+                        <Dashboard type="create" song="" submitAction={this.createSong} message="Create" />
                     </div>
-                        <Dashboard contents={<AddSong createSong={this.createSong} />} message="Add New Song"/>
                 </div>
             )
         }
