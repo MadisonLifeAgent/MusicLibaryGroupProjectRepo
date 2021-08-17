@@ -28,82 +28,61 @@ class App extends Component {
     }
 
     componentDidMount() {
-        this.getSongs();
+        this.initialize()
+    }
+
+    async initialize() {
+        let songs = await this.getSongs();
+        this.setState({
+            songs: songs,
+            filteredSongs: songs
+        })
     }
 
     /******************************************/
     /*     API CALLS AND HELPERS              */
     /******************************************/
 
+
     async getSongs() {
+        debugger;
         try{
             let response = await axios.get("http://127.0.0.1:8000/songs/");
-            this.setState({
-                songs: response.data,
-                filteredSongs: response.data
-            })
-            this.filterSongs()
+            return response.data
         } catch (ex) {
             console.log("API call failed.");
         }
     }
 
-    // newSong
-    createSong = (newSong) => {
-        this.newSong(newSong);
+    async refreshSongs(callback, value) {
+        debugger;
+        await callback(value);
+        let songs = await this.getSongs();
+        this.setState({
+            songs: songs
+        })
+        this.filterSongs(this.state.filterValues);
     }
 
-    async newSong(song) {
+    async createSong(song) {
         try{
             let response = await axios.post("http://127.0.0.1:8000/songs/", song);
-            let currentSongs = this.state.songs;
-            currentSongs.push(response.data);
-            this.setState({
-                songs: currentSongs});
         } catch (ex) {
             console.log("API call failed.");
         }
     }
 
-    // api call to update a song
-    async udpateSong(song) {
+    async editSong(song) {
         try{
             let response = await axios.put(`http://127.0.0.1:8000/songs/detail/${song.id}`, song);
-
-            // Manually update the context
-            let currentSongIndex = this.state.songs.findIndex( (stateSong) => stateSong.id === song.id );
-            let allSongs = this.state.songs;
-            allSongs[currentSongIndex] = song;
-            this.setState({
-                songs: allSongs
-            });
         } catch (ex) {
             console.log("API call failed.");
         }
     }
-    
-    // Call the async update method
-    editSong = (song) => {
-        this.udpateSong(song);
-    }
 
-    // delete song
-    deleteSong = (song) => {
-        this.deleteOneSong(song);
-    }
-
-    // api call to update a song
-    async deleteOneSong(song) {
+    async deleteSong(song) {
         try{
             let response = await axios.delete(`http://127.0.0.1:8000/songs/detail/${song.id}`);
-
-            console.log(response.status);
-            // Manually update the context
-            let remainingSongs = this.state.songs;
-            remainingSongs = remainingSongs.filter( (stateSong) => { return (stateSong.id !== song.id) });
-            this.setState({
-                songs: remainingSongs
-            });
         } catch (ex) {
             console.log("API call failed.");
         }
@@ -178,10 +157,10 @@ class App extends Component {
                     </div>
                     <div class="container-fluid p-2 mb-2" id="table-border">
                         <FilterSongs songs={this.state.filteredSongs} updateFilters={this.updateFilter} />
-                        <SongsTable songs={this.state.filteredSongs} updateSong={this.editSong} deleteSong={this.deleteSong} />
+                        <SongsTable songs={this.state.filteredSongs} updateSong={(song) => this.refreshSongs(this.editSong, song)} deleteSong={(song) => this.refreshSongs(this.deleteSong, song)} />
                     </div>
                     <div>
-                        <Dashboard type="create" song="" submitAction={this.createSong} message="Create" />
+                        <Dashboard type="create" song="" submitAction={(song) => this.refreshSongs(this.createSong, song)} message="Create" />
                     </div>
                 </div>
             )
