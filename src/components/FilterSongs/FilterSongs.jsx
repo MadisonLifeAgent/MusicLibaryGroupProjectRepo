@@ -55,8 +55,8 @@ const FilterSongs = (props) => {
                 <input class="mb-3 me-2" id="form-border" type="text" value={artist} onChange={e => updateFilters("artist", e.target.value)} placeholder="Artist" />
                 <input class="mb-3 me-2" id="form-border" type="text" value={album} onChange={e => updateFilters("album", e.target.value)} placeholder="Album"/>
                 <input class="mb-3 me-2" id="form-border" type="text" value={genre} onChange={e => updateFilters("genre", e.target.value)} placeholder="Genre" />
-                <input class="mb-3 me-2" id="form-border" type="date" value={release} onChange={e => updateFilters("release", e.target.value)} placeholder="Release Date" />
                 <input class="mb-3 me-2" id="form-border" type="text" value={likes} onChange={e => updateFilters("likes", e.target.value)} placeholder="Likes" />
+                <input class="mb-3 me-2" id="form-border" type="date" value={release} onChange={e => updateFilters("release", e.target.value)} placeholder="Release Date" />
             </form>
         </div>
     )

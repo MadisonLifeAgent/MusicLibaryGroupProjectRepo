@@ -160,7 +160,12 @@ class App extends Component {
     /************************************/
     render() {
         if (this.state.songs.length === 0) {
-            return (<h1>Sorry, no songs available!</h1>)
+            return (
+            <div>
+                <header id="logo">Jukebox Hero</header>
+                <Dashboard type="create" song="" submitAction={(song) => this.refreshSongs(this.createSong, song)} message="Create Song" />
+            </div>
+            )
         } else {
             return (
                 <div class="p-3" id="default-font">
@@ -172,7 +177,7 @@ class App extends Component {
                         <SongsTable songs={this.state.filteredSongs} updateSong={(song) => this.refreshSongs(this.editSong, song)} deleteSong={(song) => this.refreshSongs(this.deleteSong, song)} likeSong={(song) => this.refreshSongs(this.likeSong, song)} />
                     </div>
                     <div>
-                        <Dashboard type="create" song="" submitAction={(song) => this.refreshSongs(this.createSong, song)} message="Create" />
+                        <Dashboard type="create" song="" submitAction={(song) => this.refreshSongs(this.createSong, song)} message="Create Song" />
                     </div>
                 </div>
             )

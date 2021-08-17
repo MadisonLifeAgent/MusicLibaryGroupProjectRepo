@@ -3,6 +3,7 @@ import Modal from '../Modal/Modal';
 import CreateSongModal from '../Modal/CreateSongModal';
 import DeleteSongModal from '../Modal/DeleteSongModal';
 import EditSongModal from '../Modal/EditSongModal';
+import './Dashboard.css';
 
 
 // Functionality:
@@ -42,7 +43,7 @@ class Dashboard extends Component {
             return (
                 <main className="col-sm-10 col-md-6">
                     <DeleteSongModal show={this.state.show} song={this.props.song} hideModal={this.hideModal} submitAction={this.submitAction} />
-                    <button class="kbc-button-xxs" type="button" onClick={this.showModal}>
+                    <button class="kbc-button kbc-button-xxs" type="button" onClick={this.showModal}>
                         {this.state.message}
                     </button>
                 </main>
@@ -51,14 +52,14 @@ class Dashboard extends Component {
             return (
                 <main className="col-sm-10 col-md-6">
                     <EditSongModal show={this.state.show} song={this.props.song} hideModal={this.hideModal} submitAction={this.submitAction} />
-                    <button class="kbc-button-xxs" type="button" onClick={this.showModal}>
+                    <button class="kbc-button kbc-button-xxs" type="button" onClick={this.showModal}>
                         {this.state.message}
                     </button>
                 </main>
             )    
         } else if (this.state.type === "create") {
             return (
-                <main className="col-sm-10 col-md-6">
+                <main className="container-fluid" id="centerbutton">
                     <CreateSongModal show={this.state.show} song={this.props.song} hideModal={this.hideModal} submitAction={this.submitAction} />
                     <button class="kbc-button" type="button" onClick={this.showModal}>
                         {this.state.message}

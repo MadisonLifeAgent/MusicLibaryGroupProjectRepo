@@ -16,9 +16,10 @@ const Song = (props) => {
             <td>{props.song.release_date}</td>
             <td>
                 {props.song.likes}
-                <Dashboard type="edit" song={props.song} submitAction={props.updateSong} message="Edit" />
+                <button class="kbc-button kbc-button-xxs ms-4" onClick={() => props.likeSong(props.song)}>Like</button>
+            </td>
+            <td><Dashboard type="edit" song={props.song} submitAction={props.updateSong} message="Edit" />
                 <Dashboard type="delete" song={props.song} submitAction={props.deleteSong} message="Delete" />
-                <button onClick={() => props.likeSong(props.song)}>Like</button>
             </td>
 
         </tr>
