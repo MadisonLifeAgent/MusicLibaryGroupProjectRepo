@@ -18,6 +18,7 @@ const Song = (props) => {
                 {props.song.likes}
                 <Dashboard type="edit" song={props.song} submitAction={props.updateSong} message="Edit" />
                 <Dashboard type="delete" song={props.song} submitAction={props.deleteSong} message="Delete" />
+                <button onClick={() => props.likeSong(props.song)}>Like</button>
             </td>
 
         </tr>

@@ -5,7 +5,7 @@ import './SongsTable.css';
 function SongsTable(props) {
     const songDetails = props.songs.map((song) => {
         //debugger;
-        return <Song song={song} updateSong={props.updateSong} deleteSong={props.deleteSong} />
+        return <Song song={song} updateSong={props.updateSong} deleteSong={props.deleteSong} likeSong={props.likeSong} />
     })
     return (
         <table class="container-fluid col-sm-10 table table-striped table-hover table-sm" id="table-default">

@@ -88,6 +88,15 @@ class App extends Component {
         }
     }
 
+    async likeSong(song) {
+        debugger;
+        try{
+            let response = await axios.get(`http://127.0.0.1:8000/songs/like/${song.id}`);
+        } catch (ex) {
+            console.log("API call failed.");
+        }
+    }
+
 
     /************************************/
     /*          FILTERING               */
@@ -157,7 +166,7 @@ class App extends Component {
                     </div>
                     <div class="container-fluid p-2 mb-2" id="table-border">
                         <FilterSongs songs={this.state.filteredSongs} updateFilters={this.updateFilter} />
-                        <SongsTable songs={this.state.filteredSongs} updateSong={(song) => this.refreshSongs(this.editSong, song)} deleteSong={(song) => this.refreshSongs(this.deleteSong, song)} />
+                        <SongsTable songs={this.state.filteredSongs} updateSong={(song) => this.refreshSongs(this.editSong, song)} deleteSong={(song) => this.refreshSongs(this.deleteSong, song)} likeSong={(song) => this.refreshSongs(this.likeSong, song)} />
                     </div>
                     <div>
                         <Dashboard type="create" song="" submitAction={(song) => this.refreshSongs(this.createSong, song)} message="Create" />
