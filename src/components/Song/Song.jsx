@@ -1,7 +1,8 @@
 import React from 'react';
 import EditSong from '../EditSong/EditSong';
 import Dashboard from '../Dashboard/Dashboard';
-import DeleteSong from '../DeleteSong/DeleteSong'
+import DeleteSong from '../DeleteSong/DeleteSong';
+import './Song.css';
 
 const Song = (props) => {
     return (

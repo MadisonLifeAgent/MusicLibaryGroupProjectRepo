@@ -100,7 +100,7 @@ class App extends Component {
             return (
                 <div class="p-3" id="default-font">
                     <div>
-                        <header class="rounded" id="logo">Jukebox Hero</header>
+                        <header id="logo">Jukebox Hero</header>
                     </div>
                     <div class="container-fluid p-2 mb-2" id="table-border">
                         <FilterSongs songs={this.state.songs} updateSong={this.editSong} deleteSong={this.deleteSong} />
