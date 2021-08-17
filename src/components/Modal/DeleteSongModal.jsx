@@ -10,14 +10,16 @@ const DeleteSongModal = (props) => {
 
     return (
         <div className={showHideClassName} color="white">
-            <section className="modal-main" >
-                <p>Song Title: {props.title}</p>
-                <p>Artist: {props.artist}</p>
-                <p>Album: {props.album}</p>
-                <p>Release Date: {props.release_date}</p>
-                <p>Genre: {props.genre}</p>
-                <button onClick={submitAction}>Delete Song</button>
-                <button class="btn btn-primary" onClick={close} >Cancel</button>
+            <section className="modal-main">
+                <div class="m-3" >
+                    <p>Song Title: {props.title}</p>
+                    <p>Artist: {props.artist}</p>
+                    <p>Album: {props.album}</p>
+                    <p>Release Date: {props.release_date}</p>
+                    <p>Genre: {props.genre}</p>
+                    <button onClick={submitAction}>Delete Song</button>
+                    <button class="btn btn-primary" onClick={close} >Cancel</button>
+                </div>
             </section>
         </div>
     );

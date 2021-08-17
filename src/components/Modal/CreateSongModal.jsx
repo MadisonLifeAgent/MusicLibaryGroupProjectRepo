@@ -56,27 +56,27 @@ class CreateSongModal extends React.Component {
     render() {
         return (
             <div className={this.props.show ? "modal display-block" : "modal display-none"} color="white">
-                <section className="modal-main" >
-                    <form onSubmit={() => {console.log("submitted form")}}>
+                <section className="modal-main">
+                    <form onSubmit={() => {console.log("submitted form")}} class="m-3">
                         <div class="mb-3">
                             <label for="title" class="form-label">Song Title:</label>
-                            <input name="title" type="text" value={this.state.title || ""} onChange={this.handleChange} />
+                            <input id="title" class="form-control" type="text" value={this.state.title || ""} onChange={this.handleChange} />
                         </div>    
                         <div class="mb-3">
                             <label for="artist" class="form-label">Artist:</label>
-                            <input name="artist" type="text" value={this.state.artist || ""} onChange={this.handleChange} />
+                            <input id="artist" class="form-control" type="text" value={this.state.artist || ""} onChange={this.handleChange} />
                         </div>    
                         <div class="mb-3">
                             <label for="album" class="form-label">Album:</label>
-                            <input name="album" type="text" value={this.state.album || ""} onChange={this.handleChange} />
+                            <input id="album" class="form-control" type="text" value={this.state.album || ""} onChange={this.handleChange} />
                         </div>    
                         <div class="mb-3">
                             <label for="release_date" class="form-label">Release Date:</label>
-                            <input name="release_date" type="date" value={this.state.release_date || ""} onChange={this.handleChange} />
+                            <input id="release_date" class="form-control" type="date" value={this.state.release_date || ""} onChange={this.handleChange} />
                         </div>    
                         <div class="mb-3">
                             <label for="genre" class="form-label">Genre:</label>
-                            <input name="genre" type="text" value={this.state.genre || ""} onChange={this.handleChange} />
+                            <input id="genre" class="form-control" type="text" value={this.state.genre || ""} onChange={this.handleChange} />
                         </div>
                     </form>
                     <button class="btn btn-secondary" onClick={this.hideModal}>Cancel</button>
