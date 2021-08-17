@@ -1,16 +1,29 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import FilterSongs from './FilterSongs/FilterSongs';
-import AddSong from './AddSong/AddSong';
+import SongsTable from './SongsTable/SongsTable';
 import Dashboard from './Dashboard/Dashboard';
 import './App.css';
 
 
 class App extends Component {
+
+    /**************************************/
+    /*     COMPONENT SPECIFIC METHODS     */
+    /**************************************/
     constructor(props) {
         super(props);
         this.state = {
-            songs: []
+            songs: [],
+            filteredSongs: [],
+            filterValues: {
+                title: "",
+                artist: "",
+                album: "",
+                genre: "",
+                releaseDate: "",
+                likes: ""
+            }
         };
     }
 
@@ -18,13 +31,18 @@ class App extends Component {
         this.getSongs();
     }
 
+    /******************************************/
+    /*     API CALLS AND HELPERS              */
+    /******************************************/
+
     async getSongs() {
         try{
             let response = await axios.get("http://127.0.0.1:8000/songs/");
             this.setState({
-                songs: response.data
+                songs: response.data,
+                filteredSongs: response.data
             })
-            this.forceUpdate()
+            this.filterSongs()
         } catch (ex) {
             console.log("API call failed.");
         }
@@ -92,6 +110,63 @@ class App extends Component {
     }
 
 
+    /************************************/
+    /*          FILTERING               */
+    /************************************/
+    filterSongs = (tempState) => {
+        let filters = tempState;
+        let newFilteredSongs = this.state.songs.filter( (song) => {
+            let addSong = true;
+
+            if(filters.title) {
+                if (!song.title.includes(filters.title)) {
+                    addSong = false;
+                }
+            } 
+            
+            if(addSong && filters.artist) {
+                if (!song.artist.includes(filters.artist)) {
+                    addSong = false;
+                }
+            } 
+            
+            if(addSong && filters.album) {
+                if (!song.album.includes(filters.album)) {
+                    addSong = false;
+                }
+            } 
+            
+            if(addSong && filters.genre) {
+                if (!song.genre.includes(filters.genre)) {
+                    addSong = false;
+                }
+            } 
+            
+            if(addSong && filters.releaseDate) {
+                if (!(song.release_date === filters.releaseDate)) {
+                    addSong = false;
+                }
+            }
+
+            return addSong;
+        });
+
+        this.setState({
+            filteredSongs: newFilteredSongs
+        })
+    }
+
+    updateFilter = (tempState) => {
+        this.filterSongs(tempState);
+        this.setState({
+            filterValues: tempState
+        });
+    }
+
+
+    /************************************/
+    /*              RENDER              */
+    /************************************/
     render() {
         if (this.state.songs.length === 0) {
             return (<h1>Sorry, no songs available!</h1>)
@@ -102,7 +177,8 @@ class App extends Component {
                         <header id="logo">Jukebox Hero</header>
                     </div>
                     <div class="container-fluid p-2 mb-2" id="table-border">
-                        <FilterSongs songs={this.state.songs} updateSong={this.editSong} deleteSong={this.deleteSong} />
+                        <FilterSongs songs={this.state.filteredSongs} updateFilters={this.updateFilter} />
+                        <SongsTable songs={this.state.filteredSongs} updateSong={this.editSong} deleteSong={this.deleteSong} />
                     </div>
                     <div>
                         <Dashboard type="create" song="" submitAction={this.createSong} message="Create" />
