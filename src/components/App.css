@@ -1,0 +1,9 @@
+#default-font {
+    font-family: 'Atomic Age', cursive;
+    text-transform: uppercase;
+}
+
+#table-border {
+    border: 10px solid #A7C7E7;
+    border-radius: 10px;
+}

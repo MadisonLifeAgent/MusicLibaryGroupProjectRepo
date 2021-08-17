@@ -5,16 +5,20 @@ import DeleteSong from '../DeleteSong/DeleteSong'
 
 const Song = (props) => {
     return (
-        <tr>
-            <td>{props.song.title}</td>
+        <tr class="p-2">
+            <td>
+                {props.song.title}
+                <Dashboard contents={<EditSong song={props.song} updateSong={props.updateSong} />} message="Edit" />
+                <Dashboard contents={<DeleteSong deleteSong={ () => props.deleteSong(props.song)} />} message="Delete"/>
+            </td>
             <td>{props.song.artist}</td>
             <td>{props.song.album}</td>
             <td>{props.song.genre}</td>
             <td>{props.song.release_date}</td>
             <td>{props.song.likes}</td>
-            <td><Dashboard contents={<EditSong song={props.song} updateSong={props.updateSong} />} message="Edit" /></td>
-            <td><Dashboard contents={<DeleteSong deleteSong={ () => props.deleteSong(props.song)} />} message="Delete"/></td>
+
         </tr>
+        
     );
 }
 

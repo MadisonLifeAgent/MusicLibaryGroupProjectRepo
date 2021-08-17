@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 import FilterSongs from './FilterSongs/FilterSongs';
 import AddSong from './AddSong/AddSong';
 import Dashboard from './Dashboard/Dashboard';
-import './App.css'
+import './App.css';
 
 
 class App extends Component {
@@ -98,8 +98,11 @@ class App extends Component {
             return (<h1>Sorry, no songs available!</h1>)
         } else {
             return (
-                <div class="m-4">
-                    <div class="row mb-2">
+                <div class="p-3" id="default-font">
+                    <div>
+                        <header class="rounded" id="logo">Jukebox Hero</header>
+                    </div>
+                    <div class="container-fluid p-2 mb-2" id="table-border">
                         <FilterSongs songs={this.state.songs} updateSong={this.editSong} deleteSong={this.deleteSong} />
                     </div>
                     <div class="row mb-2">
