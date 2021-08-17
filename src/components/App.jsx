@@ -67,7 +67,6 @@ class App extends Component {
     // Call the async update method
     editSong = (song) => {
         this.udpateSong(song);
-        this.forceUpdate();
     }
 
     // delete song
