@@ -48,15 +48,15 @@ const FilterSongs = (props) => {
     }
 
     return (
-        <div class="col-sm-12">
+        <div>
             <h4 class="mt-2 mb-2" id="find-songs">Find Song(s)</h4>
             <form class="align-items-center">
-                <input class="col-sm-2 mb-3 me-2" id="form-border" type="text" value={title} onChange={e => updateFilters("title", e.target.value)} placeholder="Song Title"/>
-                <input class="col-sm-2 mb-3 me-2" id="form-border" type="text" value={artist} onChange={e => updateFilters("artist", e.target.value)} placeholder="Artist" />
-                <input class="col-sm-2 mb-3 me-2" id="form-border" type="text" value={album} onChange={e => updateFilters("album", e.target.value)} placeholder="Album"/>
-                <input class="col-sm-2 mb-3 me-2" id="form-border" type="text" value={genre} onChange={e => updateFilters("genre", e.target.value)} placeholder="Genre" />
-                <input class="col-sm-2 mb-3 me-2" id="form-border" type="date" value={release} onChange={e => updateFilters("release", e.target.value)} placeholder="Release Date" />
-                <input class="col-sm-1 mb-3 me-2" id="form-border" type="text" value={likes} onChange={e => updateFilters("likes", e.target.value)} placeholder="Likes" />
+                <input class="mb-3 me-2" id="form-border" type="text" value={title} onChange={e => updateFilters("title", e.target.value)} placeholder="Song Title"/>
+                <input class="mb-3 me-2" id="form-border" type="text" value={artist} onChange={e => updateFilters("artist", e.target.value)} placeholder="Artist" />
+                <input class="mb-3 me-2" id="form-border" type="text" value={album} onChange={e => updateFilters("album", e.target.value)} placeholder="Album"/>
+                <input class="mb-3 me-2" id="form-border" type="text" value={genre} onChange={e => updateFilters("genre", e.target.value)} placeholder="Genre" />
+                <input class="mb-3 me-2" id="form-border" type="date" value={release} onChange={e => updateFilters("release", e.target.value)} placeholder="Release Date" />
+                <input class="mb-3 me-2" id="form-border" type="text" value={likes} onChange={e => updateFilters("likes", e.target.value)} placeholder="Likes" />
             </form>
         </div>
     )
