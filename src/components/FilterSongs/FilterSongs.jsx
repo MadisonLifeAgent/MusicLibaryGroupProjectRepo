@@ -10,6 +10,7 @@ const FilterSongs = (props) => {
     const [album, setAlbum] = useState("");
     const [genre, setGenre] = useState("");
     const [release, setRelease] = useState("");
+    const [likes, setLikes] = useState("");
 
     const updateFilters = (field, value) => {
         let tempState = {title: title, artist: artist, album: album, genre: genre, release: release}
@@ -35,6 +36,10 @@ const FilterSongs = (props) => {
                 tempState.release = value;
                 setRelease(value);
                 break;
+            case "likes":
+                tempState.likes = value;
+                setLikes(value);
+                break;
             default:
                 break;
         }
@@ -51,6 +56,7 @@ const FilterSongs = (props) => {
                 <input class="col-sm-2 mb-3 me-2" id="form-border" type="text" value={album} onChange={e => updateFilters("album", e.target.value)} placeholder="Album"/>
                 <input class="col-sm-2 mb-3 me-2" id="form-border" type="text" value={genre} onChange={e => updateFilters("genre", e.target.value)} placeholder="Genre" />
                 <input class="col-sm-2 mb-3 me-2" id="form-border" type="date" value={release} onChange={e => updateFilters("release", e.target.value)} placeholder="Release Date" />
+                <input class="col-sm-1 mb-3 me-2" id="form-border" type="text" value={likes} onChange={e => updateFilters("likes", e.target.value)} placeholder="Likes" />
             </form>
         </div>
     )

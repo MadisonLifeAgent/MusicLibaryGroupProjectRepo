@@ -133,6 +133,12 @@ class App extends Component {
                 }
             }
 
+            if(addSong && filters.likes) {
+                if (song.likes < filters.likes) {
+                    addSong = false;
+                }
+            }
+
             return addSong;
         });
 
